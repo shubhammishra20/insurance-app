@@ -1,5 +1,7 @@
-const mongoose = require('../utils/db');
+const mongoose = require("../utils/db");
+
 const lobSchema = new mongoose.Schema({
-  name: { type: String, required: true }
+  name: { type: String, required: true },
 });
-module.exports = mongoose.model('Lob', lobSchema);
+
+module.exports = mongoose.model("Lob", lobSchema);

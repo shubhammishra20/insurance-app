@@ -24,10 +24,7 @@ router.get("/policies", async (req, res, next) => {
 
     if (!user) return res.status(404).json({ error: "User not found" });
     const policies = await Policy.find({ userId: user._id })
-      .populate("userId")
-      .populate("accountId")
-      .populate("lobId")
-      .populate("carrierId")
+      .populate(["userId", "accountId", "lobId", "carrierId"])
       .exec();
     res.json(policies);
   } catch (err) {

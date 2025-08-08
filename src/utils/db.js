@@ -1,5 +1,13 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/insurancedb");
+
+require("dotenv").config(); // Load variables from .env
+
+const uri = process.env.MONGO_URI;
+if (!uri) {
+  console.error("MONGO_URI not defined. Check your .env file.");
+  process.exit(1);
+}
+mongoose.connect(uri);
 
 mongoose.connection.on("connected", () => console.log("MongoDB connected"));
 mongoose.connection.on("error", (err) =>
