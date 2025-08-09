@@ -1,5 +1,3 @@
-// src/routes/upload.js
-
 const express = require("express");
 const multer = require("multer");
 const { Worker } = require("worker_threads");
@@ -22,7 +20,6 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const filename = `${Date.now()}-${file.originalname}`;
     cb(null, filename);
-    //cb(null, Date.now() + "-" + file.originalname);
   },
 });
 const upload = multer({ storage: storage });
